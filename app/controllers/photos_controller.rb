@@ -25,4 +25,12 @@ class PhotosController < ApplicationController
     render("create_row.html.erb")
   end
 
+  def destroy
+    d = Photo.find(params[:id])
+
+    d.destroy
+
+    render("destroy.html.erb")
+  end
+
 end
