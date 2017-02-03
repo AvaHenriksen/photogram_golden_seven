@@ -10,9 +10,10 @@ class PhotosController < ApplicationController
 
   def show
     p = Photo.find(params[:id])
-    @photo = p.source
+    @photo_source= p.source
     @caption = p.caption
     render("show.html.erb")
+
   end
 
   def create_row
@@ -30,7 +31,24 @@ class PhotosController < ApplicationController
 
     d.destroy
 
-    render("destroy.html.erb")
+    redirect_to("http://localhost:3000/photos")
+  end
+
+  def edit_form
+    p = Photo.find(params[:id])
+    @photo_source = p.source
+    @caption = p.caption
+    render("edit_form.html.erb")
+  end
+
+  def update_row
+    u = Photo.find(params[:id])
+    u.source = params[:the_new_source]
+    u.caption = params[:the_new_caption]
+
+    u.save
+
+    redirect_to("http://localhost:3000/photos/:id")
   end
 
 end
