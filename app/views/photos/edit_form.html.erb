@@ -1,8 +1,6 @@
 <h1>Edit a Photo</h1>
 
-<% photo.id = params[:id] %>
-
-<form action="http://localhost:3000/update_photo/<%=photo.id%>"
+<form action="http://localhost:3000/update_photo/<%=params[:id]%>">
   <div>
     <label for="photo_caption">Caption:</label>
     <input id="photo_caption" type="text" name="the_new_caption" value="<%=@caption%>">
